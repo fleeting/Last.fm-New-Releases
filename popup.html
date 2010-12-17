@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="css/popup.css" type="text/css">	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script>
+	$.getJSON("http://ws.audioscrobbler.com/2.0/?method=user.getnewreleases&format=json&user=freak2532&api_key=2bfe0f77271c33930848bf6976cd7bab",
+	function(data) {
+		if(data != null){
+			html = '';
+			$.each(data.albums.album, function(i,item){
+				$.getJSON("http://ws.audioscrobbler.com/2.0/?method=album.getbuylinks&format=json&artist="+encodeURI(item.artist.name)+"&album="+encodeURI(item.name)+"&country=united%20states&api_key=2bfe0f77271c33930848bf6976cd7bab",
+				function(data) {
+					if(data != null){
+						$.each(data.affiliations.downloads.affiliation, function(i,item){
+							// create buy links for each album using the following:
+							// item.buyLink
+							// item.supplierIcon
+							// item.supplierName
+						});
+					}
+				});	
+				
+				$.getJSON("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&format=json&api_key=2bfe0f77271c33930848bf6976cd7bab&artist="+encodeURI(item.artist.name)+"&album="+encodeURI(item.name)+"",
+				function(data) {
+					if(data != null){
+						// get album info using the following:
+						// data.album.playcount
+						// data.album.listeners
+					}
+				});	
+				
+				html += '<article>';
+				html += '<figure><img src="'+item.image[1]["#text"]+'" alt=""></figure>';
+				html += '<h3><a href="'+item.url+'" title="">'+item.name+'</a></h3>';
+				html += '<h4><a href="'+item.artist.url+'" title="">'+item.artist.name+'</a></h4>';
+				html += '<p>Released on '+item["@attr"].releasedate+'</p>';
+				html += '</article>';
+			});
+			$('#newReleases').html(html);
+		}
+	});
+	</script>
+<body>
+	<div id="wrapper">
+		<header>
+			<h1><img src="images/lastfm_red.png" alt="Last.fm"></h1>
+			<h2>New Releases</h2>
+		</header>
+
+		<section id="newReleases">		
+			<article>
+				<p>Loading New Releases...</p>
+			</article>
+		</section>
+
+		<footer>
+			<p>Developed by <a href="http://jamesfleeting.com" title="James Fleeting Is Awesome" target="_blank">James Fleeting</a> of <a href="http://monkeecreate.com" title="monkeeCreate" target="_blank">monkeeCreate</a><br />
+				Not affiliated in any way with last.fm</p>
+		</footer>
+	</div>
+</body>
+</html>

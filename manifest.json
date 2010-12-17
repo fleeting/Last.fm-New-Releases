@@ -1,0 +1,18 @@
+{
+	"name": "Last.fm New Releases",
+	"version": "1.0",
+	"description": "Always on the hunt for new music from your favorite artists? This extension displays new releases for your last.fm artists.",
+	"icons": {
+		"128": "images/lastfm_64.png"
+	},
+	"background_page": "background.html",
+	"browser_action": {
+		"popup": "popup.html",
+		"default_title": "Last.fm New Releases",
+		"default_icon": "images/lastfm_32.png"
+	},
+	"options_page": "options.html",
+	"permissions": [
+		"notifications","http://ws.audioscrobbler.com/", "https://ws.audioscrobbler.com/"
+	]
+}
