@@ -4,12 +4,18 @@
 	<link rel="stylesheet" href="css/popup.css" type="text/css">	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script>
-	$.getJSON("http://ws.audioscrobbler.com/2.0/?method=user.getnewreleases&format=json&user=freak2532&api_key=2bfe0f77271c33930848bf6976cd7bab",
+	$.getJSON("http://ws.audioscrobbler.com/2.0/?method=user.getnewreleases&format=json&user=defvayne23&api_key=2bfe0f77271c33930848bf6976cd7bab",
 	function(data) {
 		if(data != null){
 			html = '';
-			$.each(data.albums.album, function(i,item){
-				$.getJSON("http://ws.audioscrobbler.com/2.0/?method=album.getbuylinks&format=json&artist="+encodeURI(item.artist.name)+"&album="+encodeURI(item.name)+"&country=united%20states&api_key=2bfe0f77271c33930848bf6976cd7bab",
+			aAlbums = new Array();
+			
+			if(data.albums.album instanceof Array)
+				aAlbums = data.albums.album;
+			else
+				aAlbums = [data.albums.album];
+			
+			$.each(aAlbums, function(i,item){				$.getJSON("http://ws.audioscrobbler.com/2.0/?method=album.getbuylinks&format=json&artist="+encodeURI(item.artist.name)+"&album="+encodeURI(item.name)+"&country=united%20states&api_key=2bfe0f77271c33930848bf6976cd7bab",
 				function(data) {
 					if(data != null){
 						$.each(data.affiliations.downloads.affiliation, function(i,item){
@@ -32,8 +38,8 @@
 				
 				html += '<article>';
 				html += '<figure><img src="'+item.image[1]["#text"]+'" alt=""></figure>';
-				html += '<h3><a href="'+item.url+'" title="">'+item.name+'</a></h3>';
-				html += '<h4><a href="'+item.artist.url+'" title="">'+item.artist.name+'</a></h4>';
+				html += '<h3><a href="'+item.url+'" title="'+item.name+'">'+item.name+'</a></h3>';
+				html += '<h4><a href="'+item.artist.url+'" title="'+item.artist.name+'">'+item.artist.name+'</a></h4>';
 				html += '<p>Released on '+item["@attr"].releasedate+'</p>';
 				html += '</article>';
 			});
@@ -41,6 +47,7 @@
 		}
 	});
 	</script>
+</head>
 <body>
 	<div id="wrapper">
 		<header>

@@ -99,9 +99,35 @@ header h2 {
 	margin: 0 0 15px;	
 }
 
+#newReleases a:link, #newReleases a:active, #newReleases a:visited {
+	text-decoration: none;
+}
+
+#newReleases a:hover {
+	border-bottom: 1px solid #333;
+}
+
 #newReleases article figure {
+	float: left;
 	width: 64px;
 	height: 64px;
+	margin: 0 10px 10px 0;
+}
+
+#newReleases h3 {
+	font: bold 1.4em sans-serif;
+}
+
+#newReleases h3 a:link, #newReleases h3 a:active, #newReleases h3 a:visited {
+	color: #333;
+}
+
+#newReleases article h4 {
+	font: normal 1.2em sans-serif;
+}
+
+#newReleases h4 a:link, #newReleases h4 a:active, #newReleases h4 a:visited {
+	color: #333;
 }
 
 /* @end */
