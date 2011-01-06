@@ -1,0 +1,128 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:bold+Lobster);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+body {
+	background: #333;
+	width: 350px;
+	margin: 15px auto;
+}
+
+h1 a:link, h1 a:active, h1 a:visited {
+	background: url(../images/lastfm_red.png) no-repeat 0 0;
+	display: block;
+	width: 154px;
+	height: 47px;
+	text-indent: -99999px;
+	color: #333;
+	margin: 0 auto 15px;
+	text-shadow: rgba(250, 250, 250, 0.6) 2px 2px 0;
+}
+
+section {
+	margin: 25px 0;
+	overflow: hidden;
+}
+
+#status {
+	background: #dafcd3;
+	color: #00a708;
+	border: 1px solid #8dd792;
+	padding: 8px;
+	margin: 10px 0 25px;
+	font-size: 1.4em;
+}
+
+#status p {
+	margin:  0;
+}
+
+form {
+	text-align: center;
+}
+
+form label {
+	float: left;
+	font: 18px/1em 'Droid Sans', sans-serif;
+	color: #fff;
+}
+
+form input[type="text"], form input[type="text"]:focus {
+	outline: none;
+	padding: .5em .6em .4em .6em;
+	margin: 4px 0 35px;
+	display: inline-block;
+	width: 350px;
+	height: 45px;
+	font: 25px/1em 'Droid Sans', sans-serif;
+	-webkit-border-radius: 8px;
+	background-image: -webkit-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0.7) ));
+	color: hsl(0, 0%, 40%) !important;
+	background-color: #fff;
+	border-top: 1px solid rgba(255,255,255,0.8);
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	-webkit-transition: background .2s ease-in-out;
+	-webkit-box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, rgba(0,0,0,0.2) 0 .5em 5px;
+}
+
+form input[type="submit"] {
+	margin: 20px auto 0;
+}
+
+.button {
+	text-decoration: none;
+	font: 24px/1em 'Droid Sans', sans-serif;
+	font-weight: bold;
+	text-shadow: rgba(255,255,255,.5) 0 1px 0;
+	-webkit-user-select: none;
+	padding: .5em .6em .4em .6em;
+	margin: .5em;
+	display: inline-block;
+	position: relative;
+	-webkit-border-radius: 8px;
+	border-top: 1px solid rgba(255,255,255,0.8);
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	background-image: -webkit-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0.7) ));
+	-webkit-transition: background .2s ease-in-out;
+	color: hsl(0, 0%, 40%) !important;
+	background-color: hsl(0, 0%, 75%);
+	-webkit-box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, hsl(0, 0%, 60%) 0 .1em 3px, hsl(0, 0%, 45%) 0 .3em 1px, rgba(0,0,0,0.2) 0 .5em 5px;
+}
+
+.button:hover {
+	background-color: hsl(0, 0%, 83%);
+}
+
+.button:active {
+	background-image: -webkit-gradient(radial, 50% 0, 100, 50% 0, 0, from( rgba(255,255,255,0) ), to( rgba(255,255,255,0) ));
+	-webkit-box-shadow: inset rgba(255,255,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.2) 0 -0.1em .3em, rgba(0,0,0,0.4) 0 .1em 1px, rgba(0,0,0,0.2) 0 .2em 6px;
+	-webkit-transform: translateY(.2em);
+}
+
+.button:focus {
+	outline: none;
+	color: rgba(254,255,255,0.9) !important;
+	text-shadow: rgba(0,0,0,0.2) 0 1px 2px;
+}
+
+footer {
+	margin: 10px 0;
+}
+
+footer p {
+	font-size: 12px;
+	color: #999;
+	text-align: center;
+}
+
+footer a:link, footer a:active, footer a:visited {
+	color: #888;
+	text-decoration: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+.hidden {
+	display: none;
+}

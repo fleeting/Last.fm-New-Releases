@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="css/popup.css" type="text/css">	
+	<link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/popup.css" type="text/css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-	<script>
-	var apiKey = "2bfe0f77271c33930848bf6976cd7bab",
-		username = "freak2532";
+
+	<script>	
+	var apiKey = "2bfe0f77271c33930848bf6976cd7bab";
 		
 	function getReleases() {
 		$.ajax({
 			type: 'get',
-			url: "http://ws.audioscrobbler.com/2.0/?method=user.getnewreleases&format=json&user="+username+"&api_key="+apiKey,
+			url: "http://ws.audioscrobbler.com/2.0/?method=user.getnewreleases&format=json&user="+localStorage["lastfmUsername"]+"&api_key="+apiKey,
 			dataType: 'json',
 			async: false,
 			success: function(data) {
 				html = '';
 				if(data != null){
 					aAlbums = new Array();
-					console.log(data);
 					if(data.albums.album instanceof Array)
 						aAlbums = data.albums.album;
 					else
@@ -26,12 +26,20 @@
 					$.each(aAlbums, function(i,item){
 						albumInfo = getAlbumInfo(item.artist.name, item.name);
 						buyLinks = getBuyLinks(item.artist.name, item.name);
+
+						releaseDateTime = item["@attr"].releasedate.split(" ");	
 						
 						html += '<article>';
-						html += '<figure><img src="'+item.image[1]["#text"]+'" alt=""></figure>';
-						html += '<h3><a href="'+item.url+'" title="'+item.name+'">'+item.name+'</a></h3>';
-						html += '<h4><a href="'+item.artist.url+'" title="'+item.artist.name+'">'+item.artist.name+'</a></h4>';
-						html += '<p>Released on '+item["@attr"].releasedate+'</p>';
+						html += '<h3><a href="'+item.url+'" title="'+item.name+'" target="_blank">'+item.name+'</a> <span>by <a href="'+item.artist.url+'" title="'+item.artist.name+'" target="_blank">'+item.artist.name+'</a></span></h3>';
+						html += '<figure><a href="'+item.url+'" title="'+item.name+'" target="_blank"><img src="'+item.image[2]["#text"]+'" alt=""></a></figure>';
+						html += '<p><strong>Released On</strong>:<br />'+releaseDateTime[0]+' '+releaseDateTime[1]+' '+releaseDateTime[2]+' '+releaseDateTime[3]+'</p>';
+						html += '<p><strong>Activity</strong>:<br />'+albumInfo.playcount+' plays by '+albumInfo.listeners+' listeners</p>';
+						
+						html += '<div class="buyLinks"><p><strong>Buy Now</strong>:<br />';
+						for(var i in buyLinks) {
+							html += '<a href="'+buyLinks[i].buyLink+'" title="'+buyLinks[i].supplierName+'" target="_blank"><img src="'+buyLinks[i].supplierIcon+'" alt="'+buyLinks[i].supplierName+'"></a> ';
+						}
+						html += '</p></div>';
 						html += '</article>';
 					});
 					$('#newReleases').html(html);
@@ -49,9 +57,6 @@
 			async: false,
 			success: function(data) {
 				if(data != null){
-					// get album info using the following:
-					// data.album.playcount
-					// data.album.listeners
 					albumInfo = data.album;
 				}
 			}
@@ -69,10 +74,6 @@
 			success: function(data) {
 				if(data != null){
 					$.each(data.affiliations.downloads.affiliation, function(i,item){
-						// create buy links for each album using the following:
-						// item.buyLink
-						// item.supplierIcon
-						// item.supplierName
 						buyLinks[i] = item;
 					});
 				}
@@ -80,8 +81,25 @@
 		});
 		return buyLinks;
 	}
+	
+	$(document).ready(function() {
+		if(!localStorage["lastfmUsername"] || localStorage["lastfmUsername"] == "") {
+			$("#newReleases").hide();
+			$("#options").slideDown("slow");
+		} else {
+			getReleases();
+			$("#options").hide();
+			$("#newReleases").slideDown("slow");
+		}
 		
-	$(document).ready(function() {getReleases();});
+		$("form").submit(function() {
+			localStorage.setItem("lastfmUsername", $("input[name='username']").val());
+			$("#options").hide();
+			$("#newReleases").slideDown("slow");
+			getReleases();
+			return false;
+		});
+	});	
 	</script>
 </head>
 <body>
@@ -90,7 +108,16 @@
 			<h1><img src="images/lastfm_red.png" alt="Last.fm"></h1>
 			<h2>New Releases</h2>
 		</header>
+		
+		<section id="options">
+			<form id="options" name="options" action="">
+				<label>Last.fm Username:</label><br />
+				<input id="lastfmUsername" type="text" name="username"><br />
 
+				<input type="submit" value="Save Options" class="button blue">
+			</form>
+		</section>
+		
 		<section id="newReleases">		
 			<article>
 				<p>Loading New Releases...</p>

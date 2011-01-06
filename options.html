@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Last.fm New Releases</title>
+	<link rel="stylesheet" href="css/options.css" type="text/css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script>
+	$(window).load(function() {
+		$('input[name=username]').val(localStorage["lastfmUsername"]);
+		
+		$('form[name=options]').submit(function() {
+			localStorage["lastfmUsername"] = $('input[name=username]').val();
+			$('#status').html('<p>Options Saved.</p>').slideDown('slow').delay(1500).slideUp('slow');
+			
+			return false;
+		});
+	});
+	</script>
+</head>
+<body>
+	<header>
+		<h1><a href="http://last.fm" title="Last.fm" target="_blank">Last.fm</a></h1>
+	</header>
+	
+	<section>
+		<div id="status" class="hidden"></div>
+		<form id="options" name="options" action="">
+			<label>Last.fm Username:</label><br />
+			<input id="lastfmUsername" type="text" name="username"><br />
+			
+			<input type="submit" value="Save Options" class="button blue">
+		</form>
+	</section>
+	
+	<footer>
+		<p>Developed by <a href="http://jamesfleeting.com" title="James Fleeting Is Awesome" target="_blank">James Fleeting</a> of <a href="http://monkeecreate.com" title="monkeeCreate" target="_blank">monkeeCreate</a><br />
+			Not affiliated with Last.fm.</p>
+	</footer>
+</body>
+</html>
