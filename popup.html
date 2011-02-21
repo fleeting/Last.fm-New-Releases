@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 
 	<script>	
-	var apiKey = "2bfe0f77271c33930848bf6976cd7bab";
+	var apiKey = ""; //don't forget your API key
 		
 	function getReleases() {
 		$.ajax({
@@ -31,7 +31,9 @@
 						
 						html += '<article>';
 						html += '<h3><a href="'+item.url+'" title="'+item.name+'" target="_blank">'+item.name+'</a> <span>by <a href="'+item.artist.url+'" title="'+item.artist.name+'" target="_blank">'+item.artist.name+'</a></span></h3>';
-						html += '<figure><a href="'+item.url+'" title="'+item.name+'" target="_blank"><img src="'+item.image[2]["#text"]+'" alt=""></a></figure>';
+						html += '<figure><a href="'+item.url+'" title="'+item.name+'" target="_blank">';
+						html += '<img src="images/case.png" alt="overlay" class="overlay"><img src="'+item.image[2]["#text"]+'" alt="">';
+						html += '</a></figure>';
 						html += '<p><strong>Released On</strong>:<br />'+releaseDateTime[0]+' '+releaseDateTime[1]+' '+releaseDateTime[2]+' '+releaseDateTime[3]+'</p>';
 						html += '<p><strong>Activity</strong>:<br />'+albumInfo.playcount+' plays by '+albumInfo.listeners+' listeners</p>';
 						

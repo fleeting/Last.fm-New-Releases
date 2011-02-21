@@ -127,22 +127,27 @@ header h2 {
 #newReleases article figure {
 	float: left;
 	width: 148px;
-	/*height: 126px;*/
 	margin: 0 20px 10px 0;
 	position: relative;
 }
 
-#newReleases article figure:before {
-	content: url(../images/case.png);
+#newReleases article figure a:hover {
+	border: 0;
+}
+
+#newReleases article figure img.overlay {
 	width: 148px;
 	height: 132px;
 	position: absolute;
 	top: 0;
 	left: 0;
+	margin: 0;
 }
 
 #newReleases article figure img {
 	margin: 3px 0px 0px 17px;
+	width: 126px;
+	height: 126px;
 }
 
 #newReleases h3 {
