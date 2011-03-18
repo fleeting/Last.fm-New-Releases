@@ -1,6 +1,6 @@
 {
 	"name": "Last.fm New Releases",
-	"version": "1.1",
+	"version": "1.2",
 	"description": "Always on the hunt for new music from your favorite artists? This extension displays new releases for your last.fm artists.",
 	"icons": {
 		"128": "images/lastfm_64.png"

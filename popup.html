@@ -27,7 +27,7 @@
 						albumInfo = getAlbumInfo(item.artist.name, item.name);
 						buyLinks = getBuyLinks(item.artist.name, item.name);
 
-						releaseDateTime = item["@attr"].releasedate.split(" ");	
+						releaseDateTime = item["@attr"].releasedate.split(" ");
 						
 						html += '<article>';
 						html += '<h3><a href="'+item.url+'" title="'+item.name+'" target="_blank">'+item.name+'</a> <span>by <a href="'+item.artist.url+'" title="'+item.artist.name+'" target="_blank">'+item.artist.name+'</a></span></h3>';
@@ -35,13 +35,16 @@
 						html += '<img src="images/case.png" alt="overlay" class="overlay"><img src="'+item.image[2]["#text"]+'" alt="">';
 						html += '</a></figure>';
 						html += '<p><strong>Released On</strong>:<br />'+releaseDateTime[0]+' '+releaseDateTime[1]+' '+releaseDateTime[2]+' '+releaseDateTime[3]+'</p>';
-						html += '<p><strong>Activity</strong>:<br />'+albumInfo.playcount+' plays by '+albumInfo.listeners+' listeners</p>';
-						
-						html += '<div class="buyLinks"><p><strong>Buy Now</strong>:<br />';
-						for(var i in buyLinks) {
-							html += '<a href="'+buyLinks[i].buyLink+'" title="'+buyLinks[i].supplierName+'" target="_blank"><img src="'+buyLinks[i].supplierIcon+'" alt="'+buyLinks[i].supplierName+'"></a> ';
+						if(albumInfo != null)
+							html += '<p><strong>Activity</strong>:<br />'+albumInfo.playcount+' plays by '+albumInfo.listeners+' listeners</p>';
+
+						if(buyLinks.length > 0) {
+							html += '<div class="buyLinks"><p><strong>Buy Now</strong>:<br />';
+							for(var i in buyLinks) {
+								html += '<a href="'+buyLinks[i].buyLink+'" title="'+buyLinks[i].supplierName+'" target="_blank"><img src="'+buyLinks[i].supplierIcon+'" alt="'+buyLinks[i].supplierName+'"></a> ';
+							}
+							html += '</p></div>';
 						}
-						html += '</p></div>';
 						html += '</article>';
 					});
 					$('#newReleases').html(html);
@@ -74,7 +77,7 @@
 			dataType: 'json',
 			async: false,
 			success: function(data) {
-				if(data != null){
+				if(data.affiliations != null){
 					$.each(data.affiliations.downloads.affiliation, function(i,item){
 						buyLinks[i] = item;
 					});
