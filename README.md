@@ -2,7 +2,7 @@
 
 Always on the hunt for new music from your favorite artists? This Google Chrome Extension displays new releases for your last.fm artists.
 
-![Extension Screenshot](https://lh3.googleusercontent.com/PLjuGaoCknNCsekmEZUUL8i2ayv2Tb0exkcJWfanq2pLtBVVXHAULkIH_q3aaLSV8ZxYJVUmVA=s640-h400-e365-rw)
+![Extension Screenshot](https://dl.dropboxusercontent.com/u/2086809/lastfm-newreleases-v1-screenshot.png)
 
 ## Get It
 
