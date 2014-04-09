@@ -5,9 +5,9 @@
 	<link rel="stylesheet" href="css/popup.css" type="text/css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 
-	<script>	
+	<script>
 	var apiKey = ""; //don't forget your API key
-		
+
 	function getReleases() {
 		$.ajax({
 			type: 'get',
@@ -28,7 +28,7 @@
 						buyLinks = getBuyLinks(item.artist.name, item.name);
 
 						releaseDateTime = item["@attr"].releasedate.split(" ");
-						
+
 						html += '<article>';
 						html += '<h3><a href="'+item.url+'" title="'+item.name+'" target="_blank">'+item.name+'</a> <span>by <a href="'+item.artist.url+'" title="'+item.artist.name+'" target="_blank">'+item.artist.name+'</a></span></h3>';
 						html += '<figure><a href="'+item.url+'" title="'+item.name+'" target="_blank">';
@@ -52,7 +52,7 @@
 			}
 		});
 	}
-	
+
 	function getAlbumInfo(artist, album) {
 		var albumInfo;
 		$.ajax({
@@ -68,7 +68,7 @@
 		});
 		return albumInfo;
 	}
-	
+
 	function getBuyLinks(artist, album) {
 		var buyLinks = [];
 		$.ajax({
@@ -86,7 +86,7 @@
 		});
 		return buyLinks;
 	}
-	
+
 	$(document).ready(function() {
 		if(!localStorage["lastfmUsername"] || localStorage["lastfmUsername"] == "") {
 			$("#newReleases").hide();
@@ -96,7 +96,7 @@
 			$("#options").hide();
 			$("#newReleases").slideDown("slow");
 		}
-		
+
 		$("form").submit(function() {
 			localStorage.setItem("lastfmUsername", $("input[name='username']").val());
 			$("#options").hide();
@@ -104,7 +104,7 @@
 			getReleases();
 			return false;
 		});
-	});	
+	});
 	</script>
 </head>
 <body>
@@ -113,7 +113,7 @@
 			<h1><img src="images/lastfm_red.png" alt="Last.fm"></h1>
 			<h2>New Releases</h2>
 		</header>
-		
+
 		<section id="options">
 			<form id="options" name="options" action="">
 				<label>Last.fm Username:</label><br />
@@ -122,15 +122,15 @@
 				<input type="submit" value="Save Options" class="button blue">
 			</form>
 		</section>
-		
-		<section id="newReleases">		
+
+		<section id="newReleases">
 			<article>
 				<p>Loading New Releases...</p>
 			</article>
 		</section>
 
 		<footer>
-			<p>Developed by <a href="http://jamesfleeting.com" title="James Fleeting Is Awesome" target="_blank">James Fleeting</a> of <a href="http://monkeecreate.com" title="monkeeCreate" target="_blank">monkeeCreate</a><br />
+			<p>Developed by <a href="http://twitter.com/fleetingftw"  target="_blank">James Fleeting</a> of <a href="http://monkeecreate.com" title="monkeeCreate" target="_blank">monkeeCreate</a><br />
 				Not affiliated in any way with last.fm</p>
 		</footer>
 	</div>

@@ -1,0 +1,28 @@
+{
+  "name": "lastfmnewreleases",
+  "version": "1.2.0",
+  "description": "Always on the hunt for new music from your favorite artists? This Google Chrome Extension displays new releases for your last.fm artists.",
+  "keywords": [
+    "chrome",
+    "extension",
+    "last.fm",
+    "lastfm",
+    "music"
+  ],
+  "homepage": "https://chrome.google.com/webstore/detail/lastfm-new-releases/nmnkdhjpjhggaaicdmafongigfhogcml",
+  "bugs": "https://github.com/fleeting/Last.fm-New-Releases/issues",
+  "author": {
+    "name": "James Fleeting",
+    "email": "hello@jamesfleeting.com",
+    "url": "https://github.com/fleeting"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fleeting/Last.fm-New-Releases.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
