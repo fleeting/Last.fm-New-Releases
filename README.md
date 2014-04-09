@@ -1,6 +1,6 @@
-# Last.FM New Releases | A Chrome Extension [![GitHub version](https://badge.fury.io/gh/fleeting%2FLast.fm-New-Releases.svg)](http://badge.fury.io/gh/fleeting%2FLast.fm-New-Releases)
+# Last.FM New Releases [![GitHub version](https://badge.fury.io/gh/fleeting%2FLast.fm-New-Releases.svg)](http://badge.fury.io/gh/fleeting%2FLast.fm-New-Releases)
 
-Always on the hunt for new music from your favorite artists? This Google Chrome Extension displays new releases for your last.fm artists.
+Always on the hunt for new music from your favorite artists? This Chrome Extension displays new releases for your last.fm artists.
 
 ![Extension Screenshot](https://dl.dropboxusercontent.com/u/2086809/lastfm-newreleases-v1-screenshot.png)
 
