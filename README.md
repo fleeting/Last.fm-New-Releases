@@ -12,5 +12,5 @@ Always on the hunt for new music from your favorite artists? This Chrome Extensi
 
 The extension is open source so feel free to contribute by forking and sending a pull request. If you would rather just request a new feature see below.
 
-## Problem? Feature request?
+## Problem?
 If you have any questions, problems or requests hit me up on [twitter](http://twitter.com/fleetingftw) or create a [new issue](https://github.com/fleeting/Last.fm-New-Releases/issues).
